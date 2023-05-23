@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package modelo;
 
 /**
@@ -10,5 +6,19 @@ package modelo;
  * @author FAREM CH-12
  */
 public class Categoria {
+    String Nombre_Categoria;
+
+    public Categoria(String Nombre_Categoria) {
+        this.Nombre_Categoria = Nombre_Categoria;
+    }
+
+    public String getNombre_Categoria() {
+        return Nombre_Categoria;
+    }
+
+    public void setNombre_Categoria(String Nombre_Categoria) {
+        this.Nombre_Categoria = Nombre_Categoria;
+    }
+    
     
 }

@@ -8,8 +8,9 @@ package modelo;
 public class Doctor {
 String Nombres;
 String Apellidos;
-String Sexo;
+char Sexo;
+
+
 int Cod_MINSA;
-int ID_Doctor;
 
 }

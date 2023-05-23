@@ -1,37 +1,34 @@
 
 package modelo;
 
+import java.sql.Date;
+
+
 /**
  *
  * @author UNAN-Chontales
  */
 public class Paciente {
-    int Id_Paciente;
     String Nombres;
     String Apellidos;
-    String Procedencia;
-    int Telefono;
-    String Correo;//Revisar si es string
-    String Direccion;
+    Date Fecha_Nacimiento;
     String Cedula;
+    String Direccion;
+    char Sexo;
+    String Correo;
+    int Telefono;
+    String Procedencia; 
 
-    public Paciente(int Id_Paciente, String Nombres, String Apellidos, String Procedencia, int Telefono, String Correo, String Direccion, String Cedula) {
-        this.Id_Paciente = Id_Paciente;
+    public Paciente(String Nombres, String Apellidos, Date Fecha_Nacimiento, String Cedula, String Direccion, char Sexo, String Correo, int Telefono, String Procedencia) {
         this.Nombres = Nombres;
         this.Apellidos = Apellidos;
-        this.Procedencia = Procedencia;
-        this.Telefono = Telefono;
-        this.Correo = Correo;
-        this.Direccion = Direccion;
+        this.Fecha_Nacimiento = Fecha_Nacimiento;
         this.Cedula = Cedula;
-    }
-
-    public int getId_Paciente() {
-        return Id_Paciente;
-    }
-
-    public void setId_Paciente(int Id_Paciente) {
-        this.Id_Paciente = Id_Paciente;
+        this.Direccion = Direccion;
+        this.Sexo = Sexo;
+        this.Correo = Correo;
+        this.Telefono = Telefono;
+        this.Procedencia = Procedencia;
     }
 
     public String getNombres() {
@@ -50,28 +47,20 @@ public class Paciente {
         this.Apellidos = Apellidos;
     }
 
-    public String getProcedencia() {
-        return Procedencia;
+    public Date getFecha_Nacimiento() {
+        return Fecha_Nacimiento;
     }
 
-    public void setProcedencia(String Procedencia) {
-        this.Procedencia = Procedencia;
+    public void setFecha_Nacimiento(Date Fecha_Nacimiento) {
+        this.Fecha_Nacimiento = Fecha_Nacimiento;
     }
 
-    public int getTelefono() {
-        return Telefono;
+    public String getCedula() {
+        return Cedula;
     }
 
-    public void setTelefono(int Telefono) {
-        this.Telefono = Telefono;
-    }
-
-    public String getCorreo() {
-        return Correo;
-    }
-
-    public void setCorreo(String Correo) {
-        this.Correo = Correo;
+    public void setCedula(String Cedula) {
+        this.Cedula = Cedula;
     }
 
     public String getDireccion() {
@@ -82,12 +71,36 @@ public class Paciente {
         this.Direccion = Direccion;
     }
 
-    public String getCedula() {
-        return Cedula;
+    public char getSexo() {
+        return Sexo;
     }
 
-    public void setCedula(String Cedula) {
-        this.Cedula = Cedula;
+    public void setSexo(char Sexo) {
+        this.Sexo = Sexo;
+    }
+
+    public String getCorreo() {
+        return Correo;
+    }
+
+    public void setCorreo(String Correo) {
+        this.Correo = Correo;
+    }
+
+    public int getTelefono() {
+        return Telefono;
+    }
+
+    public void setTelefono(int Telefono) {
+        this.Telefono = Telefono;
+    }
+
+    public String getProcedencia() {
+        return Procedencia;
+    }
+
+    public void setProcedencia(String Procedencia) {
+        this.Procedencia = Procedencia;
     }
     
     
