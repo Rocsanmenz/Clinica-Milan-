@@ -87,11 +87,24 @@ public class Iniciarsesion extends javax.swing.JFrame {
         jTextField2.setOpaque(false);
         jPanel2.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 210, 239, 47));
 
+<<<<<<< HEAD
         jPasswordField1.setFont(new java.awt.Font("Georgia", 0, 12)); // NOI18N
+=======
+        jPasswordField1.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
+>>>>>>> d4e93ed9410b91f263a4fc4ead6258e4b6cf3987
         jPasswordField1.setForeground(new java.awt.Color(255, 255, 255));
         jPasswordField1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Contraseña", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Gill Sans MT", 0, 14), new java.awt.Color(255, 255, 204))); // NOI18N
         jPasswordField1.setOpaque(false);
+<<<<<<< HEAD
         jPanel2.add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 300, 239, 50));
+=======
+        jPasswordField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jPasswordField1ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(72, 250, 239, 50));
+>>>>>>> d4e93ed9410b91f263a4fc4ead6258e4b6cf3987
 
         jCheckBox1.setBackground(new java.awt.Color(33, 45, 62));
         jCheckBox1.setForeground(new java.awt.Color(255, 255, 204));
@@ -115,6 +128,10 @@ public class Iniciarsesion extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jPasswordField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jPasswordField1ActionPerformed
 
     /**
      * @param args the command line arguments
