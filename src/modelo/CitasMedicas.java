@@ -12,16 +12,33 @@ import java.sql.Time;
  * @author gonzalez
  */
 public class CitasMedicas {
-    private int ID_Cliente;
-    private int ID_Doctor;
-    private Date Fecha;
-    private Time Hora;
+     int ID_CLIMED;
+     int ID_Cliente;
+     int ID_Doctor;
+     Date Fecha;
+     Time Hora;
+
+    public CitasMedicas(int ID_CLIMED, int ID_Cliente, int ID_Doctor, Date Fecha, Time Hora) {
+        this.ID_CLIMED = ID_CLIMED;
+        this.ID_Cliente = ID_Cliente;
+        this.ID_Doctor = ID_Doctor;
+        this.Fecha = Fecha;
+        this.Hora = Hora;
+    }
 
     public CitasMedicas(int ID_Cliente, int ID_Doctor, Date Fecha, Time Hora) {
         this.ID_Cliente = ID_Cliente;
         this.ID_Doctor = ID_Doctor;
         this.Fecha = Fecha;
         this.Hora = Hora;
+    }
+
+    public int getID_CLIMED() {
+        return ID_CLIMED;
+    }
+
+    public void setID_CLIMED(int ID_CLIMED) {
+        this.ID_CLIMED = ID_CLIMED;
     }
 
     public int getID_Cliente() {
@@ -55,4 +72,6 @@ public class CitasMedicas {
     public void setHora(Time Hora) {
         this.Hora = Hora;
     }
+
+   
 }

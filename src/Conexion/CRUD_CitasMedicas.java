@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package Conexion;
 
 import Conexion_BD.Conexion;
@@ -14,7 +11,7 @@ import javax.swing.table.DefaultTableModel;
  * @author gonzalez
  */
 public class CRUD_CitasMedicas {
-     public final Conexion con = new Conexion();
+    public final Conexion con = new Conexion();
     public  final Connection cn = (Connection) con.conectar();
 
  public DefaultTableModel mostrarDatos(){
@@ -43,7 +40,7 @@ public class CRUD_CitasMedicas {
    JOptionPane.showMessageDialog(null, e);
    return null;
  }
- }
+ }  
  public DefaultTableModel buscarDatos(String dato){
      ResultSet rs;
      DefaultTableModel modelo;
