@@ -6,45 +6,44 @@ import java.sql.Date;
 
 /**
  *
- * @author UNAN-Chontales
+ * @author Oreki
  */
 public class Paciente {
-    String Nombres;
-    String Apellidos;
-    Date Fecha_Nacimiento;
-    String Cedula;
-    String Direccion;
-    char Sexo;
-    String Correo;
-    int Telefono;
-    String Procedencia; 
+  int Id_Cliente;
+  int Id_Persona;
+  Date Fecha_Nacimiento;
+  String Cedula;
+  String Procedencia; 
 
-    public Paciente(String Nombres, String Apellidos, Date Fecha_Nacimiento, String Cedula, String Direccion, char Sexo, String Correo, int Telefono, String Procedencia) {
-        this.Nombres = Nombres;
-        this.Apellidos = Apellidos;
+    public Paciente(int Id_Cliente, int Id_Persona, Date Fecha_Nacimiento, String Cedula, String Procedencia) {
+        this.Id_Cliente = Id_Cliente;
+        this.Id_Persona = Id_Persona;
         this.Fecha_Nacimiento = Fecha_Nacimiento;
         this.Cedula = Cedula;
-        this.Direccion = Direccion;
-        this.Sexo = Sexo;
-        this.Correo = Correo;
-        this.Telefono = Telefono;
         this.Procedencia = Procedencia;
     }
 
-    public String getNombres() {
-        return Nombres;
+    public Paciente(int Id_Persona, Date Fecha_Nacimiento, String Cedula, String Procedencia) {
+        this.Id_Persona = Id_Persona;
+        this.Fecha_Nacimiento = Fecha_Nacimiento;
+        this.Cedula = Cedula;
+        this.Procedencia = Procedencia;
     }
 
-    public void setNombres(String Nombres) {
-        this.Nombres = Nombres;
+    public int getId_Cliente() {
+        return Id_Cliente;
     }
 
-    public String getApellidos() {
-        return Apellidos;
+    public void setId_Cliente(int Id_Cliente) {
+        this.Id_Cliente = Id_Cliente;
     }
 
-    public void setApellidos(String Apellidos) {
-        this.Apellidos = Apellidos;
+    public int getId_Persona() {
+        return Id_Persona;
+    }
+
+    public void setId_Persona(int Id_Persona) {
+        this.Id_Persona = Id_Persona;
     }
 
     public Date getFecha_Nacimiento() {
@@ -61,38 +60,6 @@ public class Paciente {
 
     public void setCedula(String Cedula) {
         this.Cedula = Cedula;
-    }
-
-    public String getDireccion() {
-        return Direccion;
-    }
-
-    public void setDireccion(String Direccion) {
-        this.Direccion = Direccion;
-    }
-
-    public char getSexo() {
-        return Sexo;
-    }
-
-    public void setSexo(char Sexo) {
-        this.Sexo = Sexo;
-    }
-
-    public String getCorreo() {
-        return Correo;
-    }
-
-    public void setCorreo(String Correo) {
-        this.Correo = Correo;
-    }
-
-    public int getTelefono() {
-        return Telefono;
-    }
-
-    public void setTelefono(int Telefono) {
-        this.Telefono = Telefono;
     }
 
     public String getProcedencia() {
