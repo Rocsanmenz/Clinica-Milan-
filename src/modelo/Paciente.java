@@ -28,6 +28,8 @@ public class Paciente extends Persona {
         this.Medico = Medico;
         this.procedimiento = procedimiento;
     }
+    
+    //Este procedimiento es para guardar
 
     public Paciente( String Cedula, String Procedencia, String Edad, String Medico, String procedimiento, String Nombres, String Apellidos, String Telefono)  {
         super(Nombres, Apellidos,  Telefono);
@@ -38,6 +40,8 @@ public class Paciente extends Persona {
         this.Medico = Medico;
         this.procedimiento = procedimiento;
     }
+    
+    //Este para actualizar xd
 
     public Paciente( String Cedula, String Procedencia, String Edad, String Medico, String procedimiento, int Id_Persona, String Nombres, String Apellidos, String Telefono) {
         super(Id_Persona, Nombres, Apellidos, Telefono);
@@ -55,15 +59,7 @@ public class Paciente extends Persona {
 
     
     
-//    public Paciente(Date Fecha_Nacimiento, String Cedula, String Procedencia, String Direccion, String Nombres, String Apellidos, String Correo, String Telefono) {
-//        super(Nombres, Apellidos, Correo, Telefono);
-//
-//        this.Fecha_Nacimiento = Fecha_Nacimiento;
-//
-//        this.Cedula = Cedula;
-//        this.Procedencia = Procedencia;
-//        this.Direccion = Direccion;
-//    }
+
 
     public int getId_Cliente() {
         return Id_Cliente;

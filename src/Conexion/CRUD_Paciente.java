@@ -26,10 +26,12 @@ public class CRUD_Paciente {
     private final Conexion con = new Conexion();
     private final Connection cn = (Connection) con.conectar();
 
+    
+    //En este metodo, se llama al Pojo Paciente
     public void Guardar(Paciente Cl) {
         try {
-            CallableStatement cbst = cn.prepareCall("{call CrearPaciente(?,?,?,?,?,?,?,?)}");
-            cbst.setString(1, Cl.getNombres());
+            CallableStatement cbst = cn.prepareCall("{call CrearPaciente(?,?,?,?,?,?,?,?)}");//Se pondran cada dato que esta en los procedimiento
+            cbst.setString(1, Cl.getNombres());                                              //tal cual estan escrito
             cbst.setString(2, Cl.getApellidos());
             cbst.setString(3, Cl.getTelefono());
             cbst.setString(4, Cl.getCedula());
