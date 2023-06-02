@@ -34,6 +34,24 @@ public class Persona {
         this.Telefono = Telefono;
     }
 
+    public Persona(String Nombres, String Apellidos,  String Telefono) {
+        this.Nombres = Nombres;
+        this.Apellidos = Apellidos;
+        this.Telefono = Telefono;
+    }
+
+    public Persona(int Id_Persona, String Nombres, String Apellidos, String Telefono) {
+        this.Id_Persona = Id_Persona;
+        this.Nombres = Nombres;
+        this.Apellidos = Apellidos;
+        this.Telefono = Telefono;
+    }
+
+    
+
+    
+    
+    
     public int getId_Persona() {
         return Id_Persona;
     }

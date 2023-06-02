@@ -11,9 +11,9 @@ import java.sql.SQLException;
  */
 public class Conexion {
     
-  
- private final String url="jdbc:sqlserver://localhost:"
-         + ";databaseName=ClinicaMilan;"
+  //Donde dice 51745, tienes que poner tu puerto de tu pc para que te de
+ private final String url="jdbc:sqlserver://localhost:51745;"
+         + ";database=ClinicaMilan;"
             + "integratedSecurity=true;" +
      "encrypt=true;trustServerCertificate=true";
    
