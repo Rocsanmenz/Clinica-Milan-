@@ -124,8 +124,6 @@ public class RegitroPaciente extends javax.swing.JFrame {
         jTablepaciente = new javax.swing.JTable();
         jTextProcedimiento = new javax.swing.JTextField();
         jtexlabeProcedimiento = new javax.swing.JLabel();
-        jTextFieldIDPersona = new javax.swing.JTextField();
-        jTextFieldIDPaciente = new javax.swing.JTextField();
         botonmostrar = new javax.swing.JButton();
         jButtonBuscar = new javax.swing.JButton();
 
@@ -300,12 +298,6 @@ public class RegitroPaciente extends javax.swing.JFrame {
                                 .addComponent(jTextFieldBuscarPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 367, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, Short.MAX_VALUE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(96, 96, 96)
-                        .addComponent(jTextFieldIDPersona, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jTextFieldIDPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(329, 329, 329))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(29, 29, 29)
                         .addComponent(jButtonGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(65, 65, 65)
@@ -327,10 +319,7 @@ public class RegitroPaciente extends javax.swing.JFrame {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jTextFieldIDPersona)
-                    .addComponent(jTextFieldIDPaciente))
-                .addGap(18, 18, 18)
+                .addGap(38, 38, 38)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jTextProcedencia, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -367,7 +356,6 @@ public class RegitroPaciente extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jButtonBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE)
                         .addGap(3, 3, 3)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -587,8 +575,6 @@ public class RegitroPaciente extends javax.swing.JFrame {
     public static javax.swing.JTextField jTextCedula;
     public static javax.swing.JTextField jTextEdad;
     private javax.swing.JTextField jTextFieldBuscarPaciente;
-    public static javax.swing.JTextField jTextFieldIDPaciente;
-    public static javax.swing.JTextField jTextFieldIDPersona;
     public static javax.swing.JTextField jTextMedico;
     public static javax.swing.JTextField jTextNombre;
     public static javax.swing.JTextField jTextProcedencia;
