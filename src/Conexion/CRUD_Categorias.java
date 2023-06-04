@@ -36,7 +36,7 @@ public class CRUD_Categorias {
     
 
 
-  public DefaultTableModel mostrarDatos() {
+  public DefaultTableModel mostrarDatosCategoria() {
         ResultSet rs;
         DefaultTableModel modelo;
         String[] titulos = { "ID_Categoria", "Nombre_Categoria"};

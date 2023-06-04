@@ -20,10 +20,12 @@ public class RegistroCategoria extends javax.swing.JFrame {
     public RegistroCategoria() {
         initComponents();
        
-        botonmostrar.setEnabled(false);
+        
         botonmostrar.setVisible(false);
         jTextID_Categoría.setVisible(false);
         jTextID_Categoría.setEnabled(false);
+        jLabel2.setVisible(false);
+        mostrar();
     
     }
 
@@ -45,7 +47,7 @@ public class RegistroCategoria extends javax.swing.JFrame {
         try {
             DefaultTableModel modelo;
             CRUD_Categorias cat = new CRUD_Categorias();
-            modelo = cat.mostrarDatos();
+            modelo = cat.mostrarDatosCategoria();
             jTableCate.setModel(modelo);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
@@ -289,9 +291,12 @@ public class RegistroCategoria extends javax.swing.JFrame {
                 editarCategoria();
 
                 limpiar();
+                
                 RegistroCategoria.jButtonGuardar2.setVisible(true);
+                RegistroCategoria.botonmostrar.doClick();
                 JOptionPane.showMessageDialog(null, "Datos actualizados correctamente");
-                Vista_Especialidad.botonmostrar.doClick();
+                
+                
 
             }
         } catch (HeadlessException e) {
@@ -301,24 +306,24 @@ public class RegistroCategoria extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonActualizarActionPerformed
 
     private void JbuttoonEliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JbuttoonEliActionPerformed
-       try {
-            if (jTextID_Categoría.getText().isEmpty()
-                    || jTextFieldNombreCate.getText().isEmpty()
-                    ) {
-                JOptionPane.showMessageDialog(null, "Existen campos vacíos");
-            } else {
+       if (datoSeleccionado >= 0) {
+            int dato = Integer.valueOf(jTableCate.getValueAt(datoSeleccionado, 0).toString());
+            CRUD_Categorias cli = new CRUD_Categorias();
+            if (JOptionPane.showConfirmDialog(rootPane,
+                "Se eliminará el registro, ¿desea continuar?",
+                "Eliminar Registro",
+                JOptionPane.WARNING_MESSAGE,
+                JOptionPane.YES_NO_OPTION)
+            == JOptionPane.YES_OPTION) {
 
-                editarCategoria();
-
-                limpiar();
-                RegistroCategoria.jButtonGuardar2.setVisible(true);
-                JOptionPane.showMessageDialog(null, "Datos actualizados correctamente");
-                Vista_Especialidad.botonmostrar.doClick();
-
-            }
-        } catch (HeadlessException e) {
-            JOptionPane.showMessageDialog(null, "Error: " + e);
-
+            cli.EliminarCategoria(dato);
+            mostrar();
+            JOptionPane.showMessageDialog(null,
+                "Dato eliminado correctamente");
+        }
+        } else {
+            JOptionPane.showMessageDialog(null,
+                "Debe seleccionar un registro de la tabla");
         }
     }//GEN-LAST:event_JbuttoonEliActionPerformed
 
