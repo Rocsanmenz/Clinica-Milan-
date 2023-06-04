@@ -12,11 +12,16 @@ package modelo;
 public class Especialidad {
     int Id_Especialidad;
     String Nombre;
+    
+    
 
     public Especialidad(int Id_Especialidad, String Nombre) {
         this.Id_Especialidad = Id_Especialidad;
         this.Nombre = Nombre;
     }
+    
+    
+    
 
     public Especialidad(String Nombre) {
         this.Nombre = Nombre;
