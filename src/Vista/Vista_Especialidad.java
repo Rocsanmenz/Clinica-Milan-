@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Vista;
 
 import Conexion.CRUD_Especialidad;
@@ -100,6 +96,12 @@ public class Vista_Especialidad extends javax.swing.JFrame {
 
         jLabel3.setText("Nombre");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 140, -1, -1));
+
+        jTextFieldIDEspecialidad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldIDEspecialidadActionPerformed(evt);
+            }
+        });
         jPanel1.add(jTextFieldIDEspecialidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 80, 210, -1));
 
         jTextFieldNombre.addActionListener(new java.awt.event.ActionListener() {
@@ -276,6 +278,10 @@ public class Vista_Especialidad extends javax.swing.JFrame {
                 "Debe seleccionar un registro de la tabla");
         }
     }//GEN-LAST:event_jButtonEliminarActionPerformed
+
+    private void jTextFieldIDEspecialidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldIDEspecialidadActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldIDEspecialidadActionPerformed
 
     /**
      * @param args the command line arguments

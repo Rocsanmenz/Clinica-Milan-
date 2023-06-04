@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Conexion;
 
 import java.sql.CallableStatement;
@@ -69,7 +65,7 @@ public class CRUD_Especialidad {
     
         public void ActualizarDatos(Especialidad C5) {
         try {
-            CallableStatement cbst = cn.prepareCall("{call ModificarPaciente(?,?)}");
+            CallableStatement cbst = cn.prepareCall("{call Modificarespecialidad(?,?)}");
             cbst.setInt(1, C5.getId_Especialidad());
             cbst.setString(2, C5.getNombre());
             
