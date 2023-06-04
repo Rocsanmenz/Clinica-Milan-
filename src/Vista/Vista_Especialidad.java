@@ -20,12 +20,15 @@ public class Vista_Especialidad extends javax.swing.JFrame {
      */
     public Vista_Especialidad() {
         initComponents();
-        botonmostrar.setEnabled(false);
+        
         botonmostrar.setVisible(false);
+        jTextFieldIDEspecialidad.setVisible(false);
+        jTextFieldIDEspecialidad.setEnabled(false);
+        mostrar();
         
     }
 
-    public void guardarPaciente() {
+    public void guardarEspecialidad() {
 
         CRUD_Especialidad cc = new CRUD_Especialidad();
         Especialidad E = new Especialidad(
@@ -43,7 +46,7 @@ public class Vista_Especialidad extends javax.swing.JFrame {
      public void mostrar() {
         try {
             DefaultTableModel modelo;
-            CRUD_Paciente cli = new CRUD_Paciente();
+            CRUD_Especialidad cli = new CRUD_Especialidad();
             modelo = cli.mostrarDatos();
             jTableEspecialidad.setModel(modelo);
         } catch (Exception e) {
@@ -72,7 +75,6 @@ public class Vista_Especialidad extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jTextFieldIDEspecialidad = new javax.swing.JTextField();
         jTextFieldNombre = new javax.swing.JTextField();
@@ -90,9 +92,6 @@ public class Vista_Especialidad extends javax.swing.JFrame {
 
         jLabel1.setText("Registro de Especialidades");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 30, -1, -1));
-
-        jLabel2.setText("Id_Especialidad");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, -1, -1));
 
         jLabel3.setText("Nombre");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 140, -1, -1));
@@ -201,7 +200,7 @@ public class Vista_Especialidad extends javax.swing.JFrame {
                     ) {
                 JOptionPane.showMessageDialog(null, "Tiene datos vacio");
             } else {
-                guardarPaciente();
+                guardarEspecialidad();
                 limpiar();
                 JOptionPane.showMessageDialog(null, "Datos guardados");
                 Vista_Especialidad.botonmostrar.doClick();
@@ -325,7 +324,6 @@ public class Vista_Especialidad extends javax.swing.JFrame {
     private javax.swing.JButton jButtonEliminar;
     public static javax.swing.JButton jButtonGuardar;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;

@@ -18,6 +18,7 @@ public class Especialidad {
     
     
     
+    
 
     public Especialidad(String Nombre) {
         this.Nombre = Nombre;

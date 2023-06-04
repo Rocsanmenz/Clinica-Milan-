@@ -45,7 +45,7 @@ public class CRUD_Especialidad {
         modelo = new DefaultTableModel(null, titulos);
 
         try {
-            CallableStatement cbstc = cn.prepareCall("{call MostrarEspecialidad}");
+            CallableStatement cbstc = cn.prepareCall("{call MostrarEspecialidades}");
             rs = cbstc.executeQuery();
 
             while (rs.next()) {
@@ -65,7 +65,7 @@ public class CRUD_Especialidad {
     
         public void ActualizarDatos(Especialidad C5) {
         try {
-            CallableStatement cbst = cn.prepareCall("{call Modificarespecialidad(?,?)}");
+            CallableStatement cbst = cn.prepareCall("{call ActualizarEspecialidad(?,?)}");
             cbst.setInt(1, C5.getId_Especialidad());
             cbst.setString(2, C5.getNombre());
             
