@@ -86,7 +86,7 @@ public class Vista_Especialidad extends javax.swing.JFrame {
         jButtonActualizar = new javax.swing.JButton();
         jButtonEliminar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 

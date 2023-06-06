@@ -6,8 +6,7 @@ import java.awt.HeadlessException;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import modelo.Categoria;
-import pantalla.RegitroPaciente;
-import static pantalla.RegitroPaciente.botonmostrar;
+import static Vista.RegitroPaciente.botonmostrar;
 
 /**
  *
@@ -84,7 +83,7 @@ public class RegistroCategoria extends javax.swing.JFrame {
         jButtonEditar = new javax.swing.JButton();
         JbuttoonEli = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Registro de Categoría", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 18), new java.awt.Color(0, 0, 103))); // NOI18N
 

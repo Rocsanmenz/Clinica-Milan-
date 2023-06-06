@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package pantalla;
+package Vista;
 
 import Conexion.CRUD_Paciente;
 import java.awt.Color;
@@ -129,7 +129,7 @@ public class RegitroPaciente extends javax.swing.JFrame {
         jTextFieldIDPersona = new javax.swing.JTextField();
         jTextFieldIDPaciente = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Registro de paciente", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14), new java.awt.Color(0, 0, 120))); // NOI18N
         jPanel1.setToolTipText("");
