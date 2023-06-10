@@ -12,7 +12,7 @@ import java.sql.SQLException;
 public class Conexion {
     
   //Donde dice 51745, tienes que poner tu puerto de tu pc para que te de
- private final String url="jdbc:sqlserver://localhost:51745;"
+ private final String url="jdbc:sqlserver://localhost:53733;"
          + ";database=ClinicaMilan;"
             + "integratedSecurity=true;" +
      "encrypt=true;trustServerCertificate=true";
@@ -24,7 +24,7 @@ public class Conexion {
             System.out.println("Conexion establecida");
             return cn;
         } catch (SQLException e) {
-            System.out.println("Error en la conexión: "+e);
+            System.out.println("Error en la conexion: "+e);
         }
         return null;
     }  
