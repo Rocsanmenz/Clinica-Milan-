@@ -18,6 +18,7 @@ import modelo.Especialidad;
 import Conexion_BD.Conexion;
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 public class CRUD_Especialidad {
     
@@ -89,4 +90,32 @@ public class CRUD_Especialidad {
             JOptionPane.showMessageDialog(null, e);
         }
     }
+    
+    
+    public ArrayList mostrarDatosCombo() {
+        
+        
+        ArrayList<Especialidad> especialidad = new ArrayList<>();
+
+        try {
+            CallableStatement cbstc = cn.prepareCall("{call RellenarEspecialidad}");
+            ResultSet rs = cbstc.executeQuery();
+
+            while (rs.next()) {
+                Especialidad em= new Especialidad();
+                em.setId_Especialidad(Integer.parseInt(rs.getString("ID_Especialidad")));
+                em.setNombre(rs.getString("Nombre"));
+                especialidad.add(em);
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+
+        return especialidad;
+    }
+    
+    
+    
+    
+    
 }

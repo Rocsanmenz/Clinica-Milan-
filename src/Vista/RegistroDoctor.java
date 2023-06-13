@@ -3,7 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package pantalla;
+package Vista;
+
+import Conexion.CRUD_Especialidad;
+import java.util.ArrayList;
+import modelo.Especialidad;
 
 /**
  *
@@ -16,6 +20,21 @@ public class RegistroDoctor extends javax.swing.JFrame {
      */
     public RegistroDoctor() {
         initComponents();
+    }
+    
+    
+    
+    public void llenarCombo(){
+        
+        CRUD_Especialidad gr = new CRUD_Especialidad();
+        ArrayList<Especialidad> listaEspecialidad = gr.mostrarDatosCombo();
+        jComboBoxEspec.removeAllItems();
+        for (int i = 0; i < listaEspecialidad.size(); i++) {
+            jComboBoxEspec.addItem(new Especialidad(
+                    listaEspecialidad.get(i).getId_Especialidad(),
+                    listaEspecialidad.get(i).getNombre()));
+        }
+
     }
 
     /**
@@ -39,7 +58,6 @@ public class RegistroDoctor extends javax.swing.JFrame {
         jTextApellidos = new javax.swing.JTextField();
         jTextCorreo = new javax.swing.JTextField();
         jTextProcedencia = new javax.swing.JTextField();
-        jTextEspecialidad = new javax.swing.JTextField();
         jTextTelefono = new javax.swing.JTextField();
         jTextID_Doctor = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
@@ -49,6 +67,7 @@ public class RegistroDoctor extends javax.swing.JFrame {
         jTextField1 = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        jComboBoxEspec = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -95,9 +114,6 @@ public class RegistroDoctor extends javax.swing.JFrame {
         jTextProcedencia.setText("jTextField5");
         jPanel1.add(jTextProcedencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(531, 67, 260, 30));
 
-        jTextEspecialidad.setText("jTextField6");
-        jPanel1.add(jTextEspecialidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(531, 109, 260, 30));
-
         jTextTelefono.setText("jTextField7");
         jPanel1.add(jTextTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(531, 168, 260, 33));
 
@@ -138,6 +154,8 @@ public class RegistroDoctor extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTable1);
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 365, 775, -1));
+
+        jPanel1.add(jComboBoxEspec, new org.netbeans.lib.awtextra.AbsoluteConstraints(536, 110, 250, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -195,6 +213,7 @@ public class RegistroDoctor extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JComboBox<Especialidad> jComboBoxEspec;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
@@ -207,7 +226,6 @@ public class RegistroDoctor extends javax.swing.JFrame {
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextApellidos;
     private javax.swing.JTextField jTextCorreo;
-    private javax.swing.JTextField jTextEspecialidad;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextID_Doctor;
     private javax.swing.JTextField jTextNombres;

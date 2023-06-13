@@ -27,6 +27,10 @@ public class Especialidad {
         this.Nombre = Nombre;
     }
 
+    public Especialidad() {
+        
+    }
+
     public int getId_Especialidad() {
         return Id_Especialidad;
     }
@@ -41,6 +45,11 @@ public class Especialidad {
 
     public void setNombre(String Nombre) {
         this.Nombre = Nombre;
+    }
+    
+    @Override
+    public String toString() {
+        return Id_Especialidad + " - " + Nombre;
     }
     
 }
