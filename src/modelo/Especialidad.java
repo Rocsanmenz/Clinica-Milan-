@@ -10,13 +10,13 @@ package modelo;
  * @author Toshiba2023
  */
 public class Especialidad {
-    int Id_Especialidad;
+    int ID_Especialidad;
     String Nombre;
     
     
 
-    public Especialidad(int Id_Especialidad, String Nombre) {
-        this.Id_Especialidad = Id_Especialidad;
+    public Especialidad(int ID_Especialidad, String Nombre) {
+        this.ID_Especialidad = ID_Especialidad;
         this.Nombre = Nombre;
     }
     
@@ -32,11 +32,11 @@ public class Especialidad {
     }
 
     public int getId_Especialidad() {
-        return Id_Especialidad;
+        return ID_Especialidad;
     }
 
     public void setId_Especialidad(int Id_Especialidad) {
-        this.Id_Especialidad = Id_Especialidad;
+        this.ID_Especialidad = Id_Especialidad;
     }
 
     public String getNombre() {
@@ -49,7 +49,7 @@ public class Especialidad {
     
     @Override
     public String toString() {
-        return Id_Especialidad + " - " + Nombre;
+        return ID_Especialidad + " - " + Nombre;
     }
     
 }

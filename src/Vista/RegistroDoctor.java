@@ -5,8 +5,11 @@
  */
 package Vista;
 
+import Conexion.CRUD_Doctor;
 import Conexion.CRUD_Especialidad;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import modelo.Especialidad;
 
 /**
@@ -20,7 +23,23 @@ public class RegistroDoctor extends javax.swing.JFrame {
      */
     public RegistroDoctor() {
         initComponents();
+        mostrar();
+        llenarCombo();
     }
+    
+    
+    
+    public void mostrar() {
+        try {
+            DefaultTableModel modelo;
+            CRUD_Doctor cli = new CRUD_Doctor();
+            modelo = cli.mostrarDatos();
+            jTabledoc.setModel(modelo);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+    }
+    
     
     
     
@@ -53,20 +72,18 @@ public class RegistroDoctor extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
         jTextNombres = new javax.swing.JTextField();
         jTextApellidos = new javax.swing.JTextField();
         jTextCorreo = new javax.swing.JTextField();
         jTextProcedencia = new javax.swing.JTextField();
         jTextTelefono = new javax.swing.JTextField();
-        jTextID_Doctor = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jTextField1 = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTabledoc = new javax.swing.JTable();
         jComboBoxEspec = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -84,7 +101,7 @@ public class RegistroDoctor extends javax.swing.JFrame {
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel4.setText("Correo");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 219, -1, -1));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel5.setText("Procedencia Medica");
@@ -98,10 +115,6 @@ public class RegistroDoctor extends javax.swing.JFrame {
         jLabel7.setText("Telefono");
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(387, 174, -1, -1));
 
-        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel8.setText("ID_Doctor");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(387, 219, -1, -1));
-
         jTextNombres.setText("jTextField1");
         jPanel1.add(jTextNombres, new org.netbeans.lib.awtextra.AbsoluteConstraints(105, 67, 233, 31));
 
@@ -109,16 +122,13 @@ public class RegistroDoctor extends javax.swing.JFrame {
         jPanel1.add(jTextApellidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(105, 109, 233, 32));
 
         jTextCorreo.setText("jTextField4");
-        jPanel1.add(jTextCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(105, 213, 233, 32));
+        jPanel1.add(jTextCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 170, 233, 32));
 
         jTextProcedencia.setText("jTextField5");
         jPanel1.add(jTextProcedencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(531, 67, 260, 30));
 
         jTextTelefono.setText("jTextField7");
         jPanel1.add(jTextTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(531, 168, 260, 33));
-
-        jTextID_Doctor.setText("jTextField8");
-        jPanel1.add(jTextID_Doctor, new org.netbeans.lib.awtextra.AbsoluteConstraints(531, 212, 260, 32));
 
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButton1.setText("Guardar");
@@ -140,7 +150,7 @@ public class RegistroDoctor extends javax.swing.JFrame {
         jTextField1.setText("               Buscar Medico");
         jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 316, 775, 31));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTabledoc.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null},
@@ -151,9 +161,9 @@ public class RegistroDoctor extends javax.swing.JFrame {
                 "Nombres", "Apelidos", "Direccion", "Correo", "Procedencia Medica", "Especialidad", "Telefono", "ID_Doctor"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(jTabledoc);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 365, 775, -1));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 365, 760, 250));
 
         jPanel1.add(jComboBoxEspec, new org.netbeans.lib.awtextra.AbsoluteConstraints(536, 110, 250, 30));
 
@@ -161,13 +171,15 @@ public class RegistroDoctor extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 814, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 53, Short.MAX_VALUE))
+                .addGap(0, 12, Short.MAX_VALUE))
         );
 
         pack();
@@ -220,14 +232,12 @@ public class RegistroDoctor extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTabledoc;
     private javax.swing.JTextField jTextApellidos;
     private javax.swing.JTextField jTextCorreo;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextID_Doctor;
     private javax.swing.JTextField jTextNombres;
     private javax.swing.JTextField jTextProcedencia;
     private javax.swing.JTextField jTextTelefono;

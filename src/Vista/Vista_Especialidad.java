@@ -26,6 +26,7 @@ public class Vista_Especialidad extends javax.swing.JFrame {
         initComponents();
         botonmostrar.setEnabled(false);
         botonmostrar.setVisible(false);
+        mostrar();
         
     }
 
@@ -47,7 +48,7 @@ public class Vista_Especialidad extends javax.swing.JFrame {
      public void mostrar() {
         try {
             DefaultTableModel modelo;
-            CRUD_Paciente cli = new CRUD_Paciente();
+            CRUD_Especialidad cli = new CRUD_Especialidad();
             modelo = cli.mostrarDatos();
             jTableEspecialidad.setModel(modelo);
         } catch (Exception e) {
