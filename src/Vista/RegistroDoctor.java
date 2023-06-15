@@ -7,10 +7,14 @@ package Vista;
 
 import Conexion.CRUD_Doctor;
 import Conexion.CRUD_Especialidad;
+import java.awt.HeadlessException;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import jdk.internal.agent.Agent;
 import modelo.Especialidad;
+import modelo.Persona;
+import modelo.Personal_Medico;
 
 /**
  *
@@ -23,12 +27,42 @@ public class RegistroDoctor extends javax.swing.JFrame {
      */
     public RegistroDoctor() {
         initComponents();
+        botonmostrar.setVisible(false);
         mostrar();
         llenarCombo();
     }
-    
-    
-    
+
+    public void guardarDoc() {
+
+        Especialidad especialidadSeleccionada = (Especialidad) jComboBoxEspec.getSelectedItem();
+        int idEspec = especialidadSeleccionada.getId_Especialidad();
+         
+        CRUD_Doctor cc = new CRUD_Doctor();
+        Personal_Medico E = new Personal_Medico(especialidadSeleccionada.getId_Especialidad(),
+                Integer.parseInt(jTextCodMinsa.getText()),
+                jTextProcedencia.getText(),
+                jTextUsuario.getText(),
+                jTextContraseña.getText(),
+                jTextNombres.getText(),
+                jTextApellidos.getText(),
+                jTextCorreo.getText(),
+                jTextTelefono.getText());
+
+        cc.Guardar(E);
+    }
+
+    public void limpiar() {
+        jTextCodMinsa.setText("");
+        jTextProcedencia.setText("");
+        jTextUsuario.setText("");
+        jTextContraseña.setText("");
+        jTextNombres.setText("");
+        jTextApellidos.setText("");
+        jTextCorreo.setText("");
+        jTextTelefono.setText("");
+
+    }
+
     public void mostrar() {
         try {
             DefaultTableModel modelo;
@@ -39,12 +73,9 @@ public class RegistroDoctor extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, e);
         }
     }
-    
-    
-    
-    
-    public void llenarCombo(){
-        
+
+    public void llenarCombo() {
+
         CRUD_Especialidad gr = new CRUD_Especialidad();
         ArrayList<Especialidad> listaEspecialidad = gr.mostrarDatosCombo();
         jComboBoxEspec.removeAllItems();
@@ -77,7 +108,7 @@ public class RegistroDoctor extends javax.swing.JFrame {
         jTextCorreo = new javax.swing.JTextField();
         jTextProcedencia = new javax.swing.JTextField();
         jTextTelefono = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        jButtonGuardar = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
@@ -85,6 +116,13 @@ public class RegistroDoctor extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTabledoc = new javax.swing.JTable();
         jComboBoxEspec = new javax.swing.JComboBox<>();
+        jTextCodMinsa = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        jTextUsuario = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
+        jTextContraseña = new javax.swing.JTextField();
+        jLabel10 = new javax.swing.JLabel();
+        botonmostrar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -93,62 +131,57 @@ public class RegistroDoctor extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setText("Nombres");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 67, -1, -1));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel2.setText("Apellidos");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 115, -1, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel4.setText("Correo");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, -1, -1));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel5.setText("Procedencia Medica");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(379, 67, -1, -1));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 30, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel6.setText("Especialidad");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(387, 115, -1, -1));
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 80, -1, -1));
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel7.setText("Telefono");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(387, 174, -1, -1));
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 140, -1, -1));
+        jPanel1.add(jTextNombres, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 30, 233, 31));
+        jPanel1.add(jTextApellidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 70, 233, 32));
+        jPanel1.add(jTextCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 130, 260, 40));
+        jPanel1.add(jTextProcedencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 30, 260, 30));
+        jPanel1.add(jTextTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 130, 260, 33));
 
-        jTextNombres.setText("jTextField1");
-        jPanel1.add(jTextNombres, new org.netbeans.lib.awtextra.AbsoluteConstraints(105, 67, 233, 31));
-
-        jTextApellidos.setText("jTextField2");
-        jPanel1.add(jTextApellidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(105, 109, 233, 32));
-
-        jTextCorreo.setText("jTextField4");
-        jPanel1.add(jTextCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 170, 233, 32));
-
-        jTextProcedencia.setText("jTextField5");
-        jPanel1.add(jTextProcedencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(531, 67, 260, 30));
-
-        jTextTelefono.setText("jTextField7");
-        jPanel1.add(jTextTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(531, 168, 260, 33));
-
-        jButton1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jButton1.setText("Guardar");
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(56, 263, 120, 35));
+        jButtonGuardar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButtonGuardar.setText("Guardar");
+        jButtonGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonGuardarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButtonGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 300, 120, 35));
 
         jButton2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButton2.setText("Actualizar");
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(249, 263, 120, 35));
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 300, 120, 35));
 
         jButton3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButton3.setText("Eliminar");
-        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(452, 263, 120, 35));
+        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 300, 120, 35));
 
         jButton4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButton4.setText("Editar");
-        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(644, 263, 120, 35));
+        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 300, 120, 35));
 
         jTextField1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jTextField1.setText("               Buscar Medico");
-        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 316, 775, 31));
+        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 340, 775, 31));
 
         jTabledoc.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -163,9 +196,31 @@ public class RegistroDoctor extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTabledoc);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 365, 760, 250));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 390, 760, 250));
 
-        jPanel1.add(jComboBoxEspec, new org.netbeans.lib.awtextra.AbsoluteConstraints(536, 110, 250, 30));
+        jPanel1.add(jComboBoxEspec, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 70, 250, 30));
+        jPanel1.add(jTextCodMinsa, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 210, 233, 32));
+
+        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel8.setText("Cod_Minsa");
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, -1, -1));
+        jPanel1.add(jTextUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 180, 260, 32));
+
+        jLabel9.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel9.setText("Usuario");
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 190, 80, -1));
+        jPanel1.add(jTextContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 230, 260, 32));
+
+        jLabel10.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel10.setText("Contraseña");
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 240, 80, -1));
+
+        botonmostrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonmostrarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(botonmostrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -178,12 +233,43 @@ public class RegistroDoctor extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 12, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 659, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButtonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGuardarActionPerformed
+        CRUD_Doctor cl = new CRUD_Doctor();
+        try {
+            if ((jTextNombres.getText().equals(""))
+                    || (jTextApellidos.getText().equals(""))
+                    || (jTextCorreo.getText().equals(""))
+                    || (jTextCodMinsa.getText().equals(""))
+                    || (jTextProcedencia.getText().equals(""))
+                    || (jTextTelefono.getText().equals(""))
+                    || (jTextUsuario.getText().equals(""))
+                    || (jTextContraseña.getText().equals(""))) {
+                JOptionPane.showMessageDialog(null, "Tiene datos vacio");
+            } else {
+//                String correo = jTextCorreo.getText();
+//            System.out.println("Valor de correo: " + correo);
+                guardarDoc();
+                
+                RegistroDoctor.botonmostrar.doClick();
+                JOptionPane.showMessageDialog(null, "Datos guardados");
+            }
+
+        } catch (HeadlessException e) {
+            JOptionPane.showMessageDialog(null, "Error: " + e);
+
+        }
+    }//GEN-LAST:event_jButtonGuardarActionPerformed
+
+    private void botonmostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonmostrarActionPerformed
+        mostrar();
+    }//GEN-LAST:event_botonmostrarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -221,25 +307,32 @@ public class RegistroDoctor extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    public static javax.swing.JButton botonmostrar;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButtonGuardar;
     private javax.swing.JComboBox<Especialidad> jComboBoxEspec;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTabledoc;
     private javax.swing.JTextField jTextApellidos;
-    private javax.swing.JTextField jTextCorreo;
+    private javax.swing.JTextField jTextCodMinsa;
+    private javax.swing.JTextField jTextContraseña;
+    public static javax.swing.JTextField jTextCorreo;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextNombres;
     private javax.swing.JTextField jTextProcedencia;
     private javax.swing.JTextField jTextTelefono;
+    private javax.swing.JTextField jTextUsuario;
     // End of variables declaration//GEN-END:variables
 }

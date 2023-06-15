@@ -5,6 +5,8 @@
  */
 package Vista_Login;
 
+import Vista.RegistroDoctor;
+
 /**
  *
  * @author Toshiba2023
@@ -84,14 +86,12 @@ public class Iniciarsesion extends javax.swing.JFrame {
         jTextField2.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
         jTextField2.setForeground(new java.awt.Color(255, 255, 255));
         jTextField2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Usuario", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Gill Sans MT", 0, 14), new java.awt.Color(255, 255, 204))); // NOI18N
-        jTextField2.setOpaque(false);
         jPanel2.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(72, 159, 239, 47));
 
         jPasswordField1.setFont(new java.awt.Font("Gill Sans MT", 0, 14)); // NOI18N
         jPasswordField1.setForeground(new java.awt.Color(255, 255, 255));
         jPasswordField1.setText("jPasswordField1");
         jPasswordField1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Contraseña", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Gill Sans MT", 0, 14), new java.awt.Color(255, 255, 204))); // NOI18N
-        jPasswordField1.setOpaque(false);
         jPasswordField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jPasswordField1ActionPerformed(evt);
@@ -130,7 +130,8 @@ public class Iniciarsesion extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel1AncestorMoved
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        RegistroDoctor Do = new RegistroDoctor();
+        Do.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jPasswordField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField1ActionPerformed

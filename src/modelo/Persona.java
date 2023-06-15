@@ -47,6 +47,13 @@ public class Persona {
         this.Telefono = Telefono;
     }
 
+    public Persona(String Nombres, String Apellidos, String Correo, String Telefono) {
+        this.Nombres = Nombres;
+        this.Apellidos = Apellidos;
+        this.Correo = Correo;
+        this.Telefono = Telefono;
+    }
+
     
 
     

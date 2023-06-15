@@ -5,7 +5,7 @@ package modelo;
  *
  * @author Toshiba2023
  */
-public class Personal_Medico {
+public class Personal_Medico extends Persona{
     int Id_Doctor;
     int Id_Persona;
     int ID_Especialidad;
@@ -14,7 +14,8 @@ public class Personal_Medico {
     String Usuario;
     String Contrasena;
 
-    public Personal_Medico(int Id_Doctor, int Id_Persona, int ID_Especialidad, int Codigo_Minsa, String Procedencia_Medica, String Usuario, String Contrasena) {
+    public Personal_Medico(int Id_Doctor, int Id_Persona, int ID_Especialidad, int Codigo_Minsa, String Procedencia_Medica, String Usuario, String Contrasena,  String Nombres, String Apellidos, char Sexo, String Correo, String Telefono) {
+        super(Id_Persona, Nombres, Apellidos, Sexo, Correo, Telefono);
         this.Id_Doctor = Id_Doctor;
         this.Id_Persona = Id_Persona;
         this.ID_Especialidad = ID_Especialidad;
@@ -24,14 +25,18 @@ public class Personal_Medico {
         this.Contrasena = Contrasena;
     }
 
-    public Personal_Medico(int Id_Persona, int ID_Especialidad, int Codigo_Minsa, String Procedencia_Medica, String Usuario, String Contrasena) {
-        this.Id_Persona = Id_Persona;
+    public Personal_Medico(int ID_Especialidad, int Codigo_Minsa, String Procedencia_Medica, String Usuario, String Contrasena,
+            String Nombres, String Apellidos, String Correo, String Telefono) {
+        super(Nombres, Apellidos, Correo, Telefono);
         this.ID_Especialidad = ID_Especialidad;
         this.Codigo_Minsa = Codigo_Minsa;
         this.Procedencia_Medica = Procedencia_Medica;
         this.Usuario = Usuario;
         this.Contrasena = Contrasena;
     }
+    
+    
+    
 
     public int getId_Doctor() {
         return Id_Doctor;
@@ -39,14 +44,6 @@ public class Personal_Medico {
 
     public void setId_Doctor(int Id_Doctor) {
         this.Id_Doctor = Id_Doctor;
-    }
-
-    public int getId_Persona() {
-        return Id_Persona;
-    }
-
-    public void setId_Persona(int Id_Persona) {
-        this.Id_Persona = Id_Persona;
     }
 
     public int getID_Especialidad() {
@@ -88,5 +85,7 @@ public class Personal_Medico {
     public void setContrasena(String Contrasena) {
         this.Contrasena = Contrasena;
     }
+
+    
     
 } 
