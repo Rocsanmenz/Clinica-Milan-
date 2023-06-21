@@ -18,6 +18,13 @@ public class Categoria {
         this.Nombre_Categoria = Nombre_Categoria;
     }
 
+    public Categoria() {
+        
+    }
+    
+    
+    
+
     public int getId_Categoria() {
         return Id_Categoria;
     }
@@ -34,7 +41,10 @@ public class Categoria {
         this.Nombre_Categoria = Nombre_Categoria;
     }
 
-     
+      @Override
+    public String toString() {
+        return Id_Categoria + " - " + Nombre_Categoria;
+    }
 
 }
     
