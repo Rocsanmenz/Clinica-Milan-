@@ -8,22 +8,20 @@ package modelo;
 public class Categoria {
     int Id_Categoria;
     String Nombre_Categoria;
+    
+     public Categoria() {
+    }
+    
 
     public Categoria(int Id_Categoria, String Nombre_Categoria) {
         this.Id_Categoria = Id_Categoria;
         this.Nombre_Categoria = Nombre_Categoria;
     }
-    
+
+   
     public Categoria(String Nombre_Categoria) {
         this.Nombre_Categoria = Nombre_Categoria;
     }
-
-    public Categoria() {
-        
-    }
-    
-    
-    
 
     public int getId_Categoria() {
         return Id_Categoria;
@@ -41,10 +39,7 @@ public class Categoria {
         this.Nombre_Categoria = Nombre_Categoria;
     }
 
-      @Override
-    public String toString() {
-        return Id_Categoria + " - " + Nombre_Categoria;
-    }
+     
 
 }
     
