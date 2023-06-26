@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package pantalla;
+package Vista;
 
 import Conexion.CRUD_Paciente;
 import java.awt.Color;

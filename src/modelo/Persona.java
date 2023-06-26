@@ -54,6 +54,15 @@ public class Persona {
         this.Telefono = Telefono;
     }
 
+    public Persona(int Id_Persona, String Nombres, String Apellidos, String Correo, String Telefono) {
+        this.Id_Persona = Id_Persona;
+        this.Nombres = Nombres;
+        this.Apellidos = Apellidos;
+        this.Correo = Correo;
+        this.Telefono = Telefono;
+    }
+
+    
     
 
     

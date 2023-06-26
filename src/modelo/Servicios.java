@@ -28,6 +28,8 @@ public class Servicios {
         this.Precio = Precio;
         this.ID_Categoria = ID_Categoria;
     }
+    
+    
 
     public int getId_Servicio() {
         return Id_Servicio;

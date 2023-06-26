@@ -1,11 +1,11 @@
-
 package modelo;
 
 /**
  *
  * @author Toshiba2023
  */
-public class Personal_Medico extends Persona{
+public class Personal_Medico extends Persona {
+
     int Id_Doctor;
     int Id_Persona;
     int ID_Especialidad;
@@ -14,7 +14,7 @@ public class Personal_Medico extends Persona{
     String Usuario;
     String Contrasena;
 
-    public Personal_Medico(int Id_Doctor, int Id_Persona, int ID_Especialidad, int Codigo_Minsa, String Procedencia_Medica, String Usuario, String Contrasena,  String Nombres, String Apellidos, char Sexo, String Correo, String Telefono) {
+    public Personal_Medico(int Id_Doctor, int Id_Persona, int ID_Especialidad, int Codigo_Minsa, String Procedencia_Medica, String Usuario, String Contrasena, String Nombres, String Apellidos, char Sexo, String Correo, String Telefono) {
         super(Id_Persona, Nombres, Apellidos, Sexo, Correo, Telefono);
         this.Id_Doctor = Id_Doctor;
         this.Id_Persona = Id_Persona;
@@ -34,9 +34,15 @@ public class Personal_Medico extends Persona{
         this.Usuario = Usuario;
         this.Contrasena = Contrasena;
     }
-    
-    
-    
+
+    public Personal_Medico(String Nombres, String Apellidos, String Correo, int Codigo_Minsa, String Procedencia_Medica, int ID_Especialidad, String Telefono, String Usuario, String Contrasena, int Id_Persona ) {
+        super(Id_Persona, Nombres, Apellidos, Correo, Telefono);
+        this.ID_Especialidad = ID_Especialidad;
+        this.Codigo_Minsa = Codigo_Minsa;
+        this.Procedencia_Medica = Procedencia_Medica;
+        this.Usuario = Usuario;
+        this.Contrasena = Contrasena;
+    }
 
     public int getId_Doctor() {
         return Id_Doctor;
@@ -86,6 +92,4 @@ public class Personal_Medico extends Persona{
         this.Contrasena = Contrasena;
     }
 
-    
-    
-} 
+}

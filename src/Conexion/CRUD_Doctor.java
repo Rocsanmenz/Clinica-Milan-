@@ -77,5 +77,38 @@ public class CRUD_Doctor {
         }
 
     }
+    
+    
+    
+    
+    public void ActualizarDatos(Personal_Medico C5) {
+        try {
+            CallableStatement cbst = cn.prepareCall("{call ModificarDoc(?,?,?,?,?,?,?,?,?,?)}");
+            cbst.setInt(1, C5.getId_Persona());
+            cbst.setString(2, C5.getNombres());
+            cbst.setString(3, C5.getApellidos());
+            cbst.setString(4, C5.getTelefono());
+            cbst.setString(5, C5.getCorreo());
+            cbst.setString(6, C5.getProcedencia_Medica());
+            cbst.setInt(7, C5.getID_Especialidad());
+            cbst.setInt(8, C5.getCodigo_Minsa());
+            cbst.setString(9, C5.getUsuario());
+            cbst.setString(10, C5.getContrasena() );
+            cbst.executeUpdate();
 
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+    }
+
+    
+    public void EliminarDoc(int ID_Persona) {
+        try {
+            CallableStatement cbst = cn.prepareCall("{call EliminarDoc(?)}");
+            cbst.setInt(1, ID_Persona);
+            cbst.executeUpdate();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+    }
 }

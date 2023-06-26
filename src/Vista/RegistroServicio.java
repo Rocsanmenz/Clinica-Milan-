@@ -24,9 +24,7 @@ import modelo.Servicios;
  */
 public class RegistroServicio extends javax.swing.JFrame {
 
-    /**
-     * Creates new form RegistroServicio
-     */
+    int datoSeleccionado = -1;
     public RegistroServicio() {
         initComponents();
         botonmostrar.setVisible(false);
@@ -58,8 +56,32 @@ public class RegistroServicio extends javax.swing.JFrame {
         cc.Guardar(S);
     }
 
-    
-    
+    public void editarEspecialidad() {
+        String strFecha = jTextFecha.getText();
+        java.sql.Date fecha = null;
+        try {
+            SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+            java.util.Date utilFecha = format.parse(strFecha);
+            fecha = new java.sql.Date(utilFecha.getTime());
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        Especialidad especialidadSeleccionada = (Especialidad) jComboBoxCategoria.getSelectedItem();
+        int idEspec = especialidadSeleccionada.getId_Especialidad();
+        CRUD_Servicios cc = new CRUD_Servicios();
+
+        Servicios cl = new Servicios(
+                jTextNombre.getText(),
+                fecha,
+                Float.parseFloat(jTextPrecio.getText()),
+                especialidadSeleccionada.getId_Especialidad()
+                
+        );
+
+        cc.ActualizarDatos(cl);
+
+    }
+
     public void mostrar() {
         try {
             DefaultTableModel modelo;
@@ -70,6 +92,7 @@ public class RegistroServicio extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, e);
         }
     }
+
     public void llenarCombo() {
 
         CRUD_Servicios gr = new CRUD_Servicios();
@@ -109,6 +132,7 @@ public class RegistroServicio extends javax.swing.JFrame {
         Precio1 = new javax.swing.JLabel();
         jComboBoxCategoria = new javax.swing.JComboBox<>();
         botonmostrar = new javax.swing.JButton();
+        JtextfieldIDSERVICIOS = new javax.swing.JTextField();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -191,6 +215,11 @@ public class RegistroServicio extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4", "Title 5"
             }
         ));
+        jTableServicio.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTableServicioMouseClicked(evt);
+            }
+        });
         jScrollPane3.setViewportView(jTableServicio);
 
         jButtonActualizar1.setBackground(new java.awt.Color(255, 0, 250));
@@ -219,6 +248,8 @@ public class RegistroServicio extends javax.swing.JFrame {
                 botonmostrarActionPerformed(evt);
             }
         });
+
+        JtextfieldIDSERVICIOS.setText("jTextField1");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -251,6 +282,8 @@ public class RegistroServicio extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(botonmostrar)
+                        .addGap(107, 107, 107)
+                        .addComponent(JtextfieldIDSERVICIOS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -271,8 +304,10 @@ public class RegistroServicio extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(botonmostrar, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(47, 47, 47)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(botonmostrar, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(JtextfieldIDSERVICIOS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(43, 43, 43)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Nombre)
                     .addComponent(jTextNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -331,7 +366,18 @@ public class RegistroServicio extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextNombreActionPerformed
 
     private void jButtonActualizar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonActualizar1ActionPerformed
-        // TODO add your handling code here:
+        if (datoSeleccionado >= 0) {
+
+            RegistroServicio.JtextfieldIDSERVICIOS.setText(String.valueOf(jTableServicio.getValueAt(datoSeleccionado, 0)));
+            RegistroServicio.jTextNombre.setText(String.valueOf(jTableServicio.getValueAt(datoSeleccionado, 1)));
+            RegistroServicio.jTextPrecio.setText(String.valueOf(jTableServicio.getValueAt(datoSeleccionado, 2)));
+            RegistroServicio.jTextFecha.setText(String.valueOf(jTableServicio.getValueAt(datoSeleccionado, 3)));
+            
+
+            RegistroDoctor.jButtonGuardar.setVisible(false);
+        } else {
+            JOptionPane.showMessageDialog(null, "Debe seleccionar un registro a actualizar");
+        }
     }//GEN-LAST:event_jButtonActualizar1ActionPerformed
 
     private void jButtonActualizar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonActualizar2ActionPerformed
@@ -341,6 +387,10 @@ public class RegistroServicio extends javax.swing.JFrame {
     private void botonmostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonmostrarActionPerformed
         mostrar();
     }//GEN-LAST:event_botonmostrarActionPerformed
+
+    private void jTableServicioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableServicioMouseClicked
+        datoSeleccionado = jTableServicio.rowAtPoint(evt.getPoint());
+    }//GEN-LAST:event_jTableServicioMouseClicked
 
     public static void mai(String args[]) {
 
@@ -353,6 +403,7 @@ public class RegistroServicio extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel ID_Categoria;
+    public static javax.swing.JTextField JtextfieldIDSERVICIOS;
     private javax.swing.JLabel Nombre;
     private javax.swing.JLabel Precio;
     private javax.swing.JLabel Precio1;
@@ -362,7 +413,7 @@ public class RegistroServicio extends javax.swing.JFrame {
     private javax.swing.JButton jButtonActualizar2;
     private javax.swing.JButton jButtonGuardar;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
-    private javax.swing.JComboBox<Categoria> jComboBoxCategoria;
+    public static javax.swing.JComboBox<Categoria> jComboBoxCategoria;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem1;
     private javax.swing.JScrollPane jScrollPane1;
@@ -371,8 +422,8 @@ public class RegistroServicio extends javax.swing.JFrame {
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
     private javax.swing.JTable jTableServicio;
-    private javax.swing.JTextField jTextFecha;
-    private javax.swing.JTextField jTextNombre;
-    private javax.swing.JTextField jTextPrecio;
+    public static javax.swing.JTextField jTextFecha;
+    public static javax.swing.JTextField jTextNombre;
+    public static javax.swing.JTextField jTextPrecio;
     // End of variables declaration//GEN-END:variables
 }

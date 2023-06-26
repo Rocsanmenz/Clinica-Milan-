@@ -22,12 +22,13 @@ import modelo.Personal_Medico;
  */
 public class RegistroDoctor extends javax.swing.JFrame {
 
-    /**
-     * Creates new form RegistroDoctor
-     */
+    int datoSeleccionado = -1;
+    
     public RegistroDoctor() {
         initComponents();
         botonmostrar.setVisible(false);
+        jtextfieldIDDoctor.setVisible(false);
+        jtextfieldIdpersona.setVisible(false);
         mostrar();
         llenarCombo();
     }
@@ -36,7 +37,7 @@ public class RegistroDoctor extends javax.swing.JFrame {
 
         Especialidad especialidadSeleccionada = (Especialidad) jComboBoxEspec.getSelectedItem();
         int idEspec = especialidadSeleccionada.getId_Especialidad();
-         
+
         CRUD_Doctor cc = new CRUD_Doctor();
         Personal_Medico E = new Personal_Medico(especialidadSeleccionada.getId_Especialidad(),
                 Integer.parseInt(jTextCodMinsa.getText()),
@@ -49,6 +50,28 @@ public class RegistroDoctor extends javax.swing.JFrame {
                 jTextTelefono.getText());
 
         cc.Guardar(E);
+    }
+
+    public void editarDoctor() {
+
+        Especialidad especialidadSeleccionada = (Especialidad) jComboBoxEspec.getSelectedItem();
+        int idEspec = especialidadSeleccionada.getId_Especialidad();
+        CRUD_Doctor cc = new CRUD_Doctor();
+
+        Personal_Medico cl = new Personal_Medico(
+                jTextNombres.getText(),
+                jTextApellidos.getText(),
+                jTextCorreo.getText(),
+                Integer.parseInt(jTextCodMinsa.getText()),
+                jTextProcedencia.getText(),
+                especialidadSeleccionada.getId_Especialidad(),
+                jTextTelefono.getText(),
+                jTextUsuario.getText(),
+                jTextContraseña.getText(),
+        Integer.parseInt(jtextfieldIdpersona.getText()));
+
+        cc.ActualizarDatos(cl);
+
     }
 
     public void limpiar() {
@@ -123,6 +146,8 @@ public class RegistroDoctor extends javax.swing.JFrame {
         jTextContraseña = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         botonmostrar = new javax.swing.JButton();
+        jtextfieldIdpersona = new javax.swing.JTextField();
+        jtextfieldIDDoctor = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -169,14 +194,29 @@ public class RegistroDoctor extends javax.swing.JFrame {
 
         jButton2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButton2.setText("Actualizar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 300, 120, 35));
 
         jButton3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButton3.setText("Eliminar");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 300, 120, 35));
 
         jButton4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButton4.setText("Editar");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 300, 120, 35));
 
         jTextField1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -194,6 +234,11 @@ public class RegistroDoctor extends javax.swing.JFrame {
                 "Nombres", "Apelidos", "Direccion", "Correo", "Procedencia Medica", "Especialidad", "Telefono", "ID_Doctor"
             }
         ));
+        jTabledoc.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTabledocMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTabledoc);
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 390, 760, 250));
@@ -221,6 +266,12 @@ public class RegistroDoctor extends javax.swing.JFrame {
             }
         });
         jPanel1.add(botonmostrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        jtextfieldIdpersona.setText("jTextField2");
+        jPanel1.add(jtextfieldIdpersona, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 140, 40, 20));
+
+        jtextfieldIDDoctor.setText("jTextField2");
+        jPanel1.add(jtextfieldIDDoctor, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 110, 40, 20));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -256,7 +307,7 @@ public class RegistroDoctor extends javax.swing.JFrame {
 //                String correo = jTextCorreo.getText();
 //            System.out.println("Valor de correo: " + correo);
                 guardarDoc();
-                
+
                 RegistroDoctor.botonmostrar.doClick();
                 JOptionPane.showMessageDialog(null, "Datos guardados");
             }
@@ -270,6 +321,85 @@ public class RegistroDoctor extends javax.swing.JFrame {
     private void botonmostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonmostrarActionPerformed
         mostrar();
     }//GEN-LAST:event_botonmostrarActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        if (datoSeleccionado >= 0) {
+
+            RegistroDoctor.jtextfieldIdpersona.setText(String.valueOf(jTabledoc.getValueAt(datoSeleccionado, 0)));
+            RegistroDoctor.jtextfieldIDDoctor.setText(String.valueOf(jTabledoc.getValueAt(datoSeleccionado, 1)));
+            RegistroDoctor.jTextNombres.setText(String.valueOf(jTabledoc.getValueAt(datoSeleccionado, 2)));
+            RegistroDoctor.jTextApellidos.setText(String.valueOf(jTabledoc.getValueAt(datoSeleccionado, 3)));
+            RegistroDoctor.jTextCorreo.setText(String.valueOf(jTabledoc.getValueAt(datoSeleccionado, 4)));
+            
+            RegistroDoctor.jTextCodMinsa.setText(String.valueOf(jTabledoc.getValueAt(datoSeleccionado, 8)));
+            
+            RegistroDoctor.jTextProcedencia.setText(String.valueOf(jTabledoc.getValueAt(datoSeleccionado, 6)));
+            
+            RegistroDoctor.jTextTelefono.setText(String.valueOf(jTabledoc.getValueAt(datoSeleccionado, 5)));
+            RegistroDoctor.jTextUsuario.setText(String.valueOf(jTabledoc.getValueAt(datoSeleccionado, 9)));
+            RegistroDoctor.jTextContraseña.setText(String.valueOf(jTabledoc.getValueAt(datoSeleccionado, 10)));
+
+            RegistroDoctor.jButtonGuardar.setVisible(false);
+        } else {
+            JOptionPane.showMessageDialog(null, "Debe seleccionar un registro a actualizar");
+        }
+       
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jTabledocMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabledocMouseClicked
+        datoSeleccionado = jTabledoc.rowAtPoint(evt.getPoint());
+    }//GEN-LAST:event_jTabledocMouseClicked
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        try {
+            if (jtextfieldIdpersona.getText().isEmpty()
+                    || jTextNombres.getText().isEmpty()
+                    || jTextApellidos.getText().isEmpty()
+                    || jTextCorreo.getText().isEmpty()
+                    
+                    || jTextCodMinsa.getText().isEmpty()
+                    || jTextProcedencia.getText().isEmpty()
+                    || jTextTelefono.getText().isEmpty()
+                    || jTextUsuario.getText().isEmpty()
+                    || jTextContraseña.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Existen campos vacíos");
+            } else {
+
+                editarDoctor();
+
+                limpiar();
+                RegistroDoctor.jButtonGuardar.setVisible(true);
+                JOptionPane.showMessageDialog(null, "Datos actualizados correctamente");
+                RegistroDoctor.botonmostrar.doClick();
+
+            }
+        } catch (HeadlessException e) {
+            JOptionPane.showMessageDialog(null, "Error: " + e);
+
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        if (datoSeleccionado >= 0) {
+            int dato = Integer.valueOf(jTabledoc.getValueAt(datoSeleccionado, 0).toString());
+            CRUD_Doctor cli = new CRUD_Doctor();
+            if (JOptionPane.showConfirmDialog(rootPane,
+                "Se eliminará el registro, ¿desea continuar?",
+                "Eliminar Registro",
+                JOptionPane.WARNING_MESSAGE,
+                JOptionPane.YES_NO_OPTION)
+            == JOptionPane.YES_OPTION) {
+
+            cli.EliminarDoc(dato);
+            mostrar();
+            JOptionPane.showMessageDialog(null,
+                "Dato eliminado correctamente");
+        }
+        } else {
+            JOptionPane.showMessageDialog(null,
+                "Debe seleccionar un registro de la tabla");
+        }
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -308,11 +438,11 @@ public class RegistroDoctor extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static javax.swing.JButton botonmostrar;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButtonGuardar;
-    private javax.swing.JComboBox<Especialidad> jComboBoxEspec;
+    public static javax.swing.JButton jButton2;
+    public static javax.swing.JButton jButton3;
+    public static javax.swing.JButton jButton4;
+    public static javax.swing.JButton jButtonGuardar;
+    public static javax.swing.JComboBox<Especialidad> jComboBoxEspec;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
@@ -325,14 +455,16 @@ public class RegistroDoctor extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTabledoc;
-    private javax.swing.JTextField jTextApellidos;
-    private javax.swing.JTextField jTextCodMinsa;
-    private javax.swing.JTextField jTextContraseña;
+    public static javax.swing.JTextField jTextApellidos;
+    public static javax.swing.JTextField jTextCodMinsa;
+    public static javax.swing.JTextField jTextContraseña;
     public static javax.swing.JTextField jTextCorreo;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextNombres;
-    private javax.swing.JTextField jTextProcedencia;
-    private javax.swing.JTextField jTextTelefono;
-    private javax.swing.JTextField jTextUsuario;
+    public static javax.swing.JTextField jTextNombres;
+    public static javax.swing.JTextField jTextProcedencia;
+    public static javax.swing.JTextField jTextTelefono;
+    public static javax.swing.JTextField jTextUsuario;
+    public static javax.swing.JTextField jtextfieldIDDoctor;
+    public static javax.swing.JTextField jtextfieldIdpersona;
     // End of variables declaration//GEN-END:variables
 }

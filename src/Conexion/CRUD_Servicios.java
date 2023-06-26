@@ -39,13 +39,11 @@ public class CRUD_Servicios {
         }
 
     }
-    
-    
-    
+
     public DefaultTableModel mostrarDatos() {
         ResultSet rs;
         DefaultTableModel modelo;
-        String[] titulos = { "ID_Servicios", "Nombres Servicio","Fecha","Precio","Nombre Categoria"};
+        String[] titulos = {"ID_Servicios", "Nombres Servicio", "Fecha", "Precio", "Nombre Categoria"};
         String[] registro = new String[5];
         modelo = new DefaultTableModel(null, titulos);
 
@@ -59,7 +57,6 @@ public class CRUD_Servicios {
                 registro[2] = rs.getString("Fecha");
                 registro[3] = rs.getString("Precio");
                 registro[4] = rs.getString("Nombre_Categoria");
-                
 
                 modelo.addRow(registro);
             }
@@ -70,8 +67,6 @@ public class CRUD_Servicios {
         }
 
     }
-    
-    
 
     public ArrayList mostrarDatosCombo() {
 
@@ -94,4 +89,19 @@ public class CRUD_Servicios {
         return categoria;
     }
 
+    public void ActualizarDatos(Servicios C5) {
+        try {
+            CallableStatement cbst = cn.prepareCall("{call ModificarDoc(?,?,?,?,?)}");
+            cbst.setInt(1, C5.getId_Servicio());
+            cbst.setString(2, C5.getNombre_Servicio());
+            cbst.setFloat(3, C5.getPrecio());
+            cbst.setInt(4, C5.getID_Categoria());
+            cbst.setDate(5, C5.getFecha());
+
+            cbst.executeUpdate();
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+    }
 }
