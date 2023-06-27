@@ -111,7 +111,7 @@
                           <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
                           <Component id="jButtonActualizar2" min="-2" pref="106" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
-                          <Component id="jButtonActualizar1" min="-2" pref="106" max="-2" attributes="0"/>
+                          <Component id="jButtoneditar" min="-2" pref="106" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
@@ -185,7 +185,7 @@
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jButtonGuardar" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
                       <Component id="jButtonActualizar" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
-                      <Component id="jButtonActualizar1" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
+                      <Component id="jButtoneditar" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
                       <Component id="jButtonActualizar2" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="62" max="-2" attributes="0"/>
@@ -246,6 +246,9 @@
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonGuardarActionPerformed"/>
           </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
+          </AuxValues>
         </Component>
         <Component class="javax.swing.JButton" name="jButtonActualizar">
           <Properties>
@@ -318,7 +321,7 @@
             </Component>
           </SubComponents>
         </Container>
-        <Component class="javax.swing.JButton" name="jButtonActualizar1">
+        <Component class="javax.swing.JButton" name="jButtoneditar">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="fa" green="0" red="ff" type="rgb"/>
@@ -329,7 +332,7 @@
             <Property name="text" type="java.lang.String" value="Editar"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonActualizar1ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtoneditarActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="jButtonActualizar2">
@@ -379,9 +382,6 @@
           </AuxValues>
         </Component>
         <Component class="javax.swing.JTextField" name="JtextfieldIDSERVICIOS">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="jTextField1"/>
-          </Properties>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
           </AuxValues>

@@ -8,7 +8,7 @@ import java.sql.Date;
  * @author FAREM CH-12
  */
 public class Servicios {
-    int Id_Servicio;
+    int ID_Servicio;
     String Nombre_Servicio;
     Date Fecha;
     float Precio;
@@ -21,8 +21,8 @@ public class Servicios {
         this.ID_Categoria = ID_Categoria;
     }
 
-    public Servicios(int Id_Servicio, String Nombre_Servicio, Date Fecha, float Precio, int ID_Categoria) {
-        this.Id_Servicio = Id_Servicio;
+    public Servicios(int ID_Servicio, String Nombre_Servicio, Date Fecha, float Precio, int ID_Categoria) {
+        this.ID_Servicio = ID_Servicio;
         this.Nombre_Servicio = Nombre_Servicio;
         this.Fecha = Fecha;
         this.Precio = Precio;
@@ -31,12 +31,12 @@ public class Servicios {
     
     
 
-    public int getId_Servicio() {
-        return Id_Servicio;
+    public int getID_Servicio() {
+        return ID_Servicio;
     }
 
-    public void setId_Servicio(int Id_Servicio) {
-        this.Id_Servicio = Id_Servicio;
+    public void setID_Servicio(int ID_Servicio) {
+        this.ID_Servicio = ID_Servicio;
     }
 
     public String getNombre_Servicio() {

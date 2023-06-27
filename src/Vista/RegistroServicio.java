@@ -9,8 +9,12 @@ import Conexion.CRUD_Especialidad;
 import Conexion.CRUD_Servicios;
 import static Vista.RegistroDoctor.botonmostrar;
 import java.awt.HeadlessException;
+import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -25,9 +29,12 @@ import modelo.Servicios;
 public class RegistroServicio extends javax.swing.JFrame {
 
     int datoSeleccionado = -1;
+
     public RegistroServicio() {
         initComponents();
         botonmostrar.setVisible(false);
+        JtextfieldIDSERVICIOS.setVisible(false);
+        
         llenarCombo();
         mostrar();
     }
@@ -56,7 +63,7 @@ public class RegistroServicio extends javax.swing.JFrame {
         cc.Guardar(S);
     }
 
-    public void editarEspecialidad() {
+    public void editarServicio() {
         String strFecha = jTextFecha.getText();
         java.sql.Date fecha = null;
         try {
@@ -66,17 +73,19 @@ public class RegistroServicio extends javax.swing.JFrame {
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        Especialidad especialidadSeleccionada = (Especialidad) jComboBoxCategoria.getSelectedItem();
-        int idEspec = especialidadSeleccionada.getId_Especialidad();
+        
+        //-------------------------------------------------------------------------
+        
+        Categoria categoriaSeleccionada = (Categoria) jComboBoxCategoria.getSelectedItem();
+        int idCategoria = categoriaSeleccionada.getId_Categoria();
         CRUD_Servicios cc = new CRUD_Servicios();
-
+//-------------------------------------------------------------------------
         Servicios cl = new Servicios(
+                Integer.parseInt(JtextfieldIDSERVICIOS.getText()),
                 jTextNombre.getText(),
                 fecha,
                 Float.parseFloat(jTextPrecio.getText()),
-                especialidadSeleccionada.getId_Especialidad()
-                
-        );
+                categoriaSeleccionada.getId_Categoria());
 
         cc.ActualizarDatos(cl);
 
@@ -106,6 +115,13 @@ public class RegistroServicio extends javax.swing.JFrame {
 
     }
 
+    public void limpiar() {
+        jTextNombre.setText("");
+        jTextFecha.setText("");
+        jTextPrecio.setText("");
+
+    }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -126,7 +142,7 @@ public class RegistroServicio extends javax.swing.JFrame {
         jButtonActualizar = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTableServicio = new javax.swing.JTable();
-        jButtonActualizar1 = new javax.swing.JButton();
+        jButtoneditar = new javax.swing.JButton();
         jButtonActualizar2 = new javax.swing.JButton();
         jTextFecha = new javax.swing.JTextField();
         Precio1 = new javax.swing.JLabel();
@@ -222,12 +238,12 @@ public class RegistroServicio extends javax.swing.JFrame {
         });
         jScrollPane3.setViewportView(jTableServicio);
 
-        jButtonActualizar1.setBackground(new java.awt.Color(255, 0, 250));
-        jButtonActualizar1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jButtonActualizar1.setText("Editar");
-        jButtonActualizar1.addActionListener(new java.awt.event.ActionListener() {
+        jButtoneditar.setBackground(new java.awt.Color(255, 0, 250));
+        jButtoneditar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButtoneditar.setText("Editar");
+        jButtoneditar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonActualizar1ActionPerformed(evt);
+                jButtoneditarActionPerformed(evt);
             }
         });
 
@@ -249,8 +265,6 @@ public class RegistroServicio extends javax.swing.JFrame {
             }
         });
 
-        JtextfieldIDSERVICIOS.setText("jTextField1");
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -265,7 +279,7 @@ public class RegistroServicio extends javax.swing.JFrame {
                         .addGap(48, 48, 48)
                         .addComponent(jButtonActualizar2, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButtonActualizar1, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButtoneditar, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(31, 31, 31))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGap(39, 39, 39)
@@ -323,7 +337,7 @@ public class RegistroServicio extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonActualizar1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtoneditar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonActualizar2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(62, 62, 62)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -358,30 +372,85 @@ public class RegistroServicio extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonGuardarActionPerformed
 
     private void jButtonActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonActualizarActionPerformed
-        // TODO add your handling code here:
+        try {
+            if (JtextfieldIDSERVICIOS.getText().isEmpty()
+                    || jTextNombre.getText().isEmpty()
+                    || jTextPrecio.getText().isEmpty()
+                    || jTextFecha.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Existen campos vacíos");
+            } else {
+
+                editarServicio();
+
+                limpiar();
+
+                RegistroServicio.jButtonGuardar.setVisible(true);
+                JOptionPane.showMessageDialog(null, "Datos actualizados correctamente");
+                RegistroServicio.botonmostrar.doClick();
+
+            }
+        } catch (HeadlessException e) {
+            JOptionPane.showMessageDialog(null, "Error: " + e);
+
+        }
     }//GEN-LAST:event_jButtonActualizarActionPerformed
 
     private void jTextNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextNombreActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextNombreActionPerformed
 
-    private void jButtonActualizar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonActualizar1ActionPerformed
+    private void jButtoneditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtoneditarActionPerformed
         if (datoSeleccionado >= 0) {
-
             RegistroServicio.JtextfieldIDSERVICIOS.setText(String.valueOf(jTableServicio.getValueAt(datoSeleccionado, 0)));
             RegistroServicio.jTextNombre.setText(String.valueOf(jTableServicio.getValueAt(datoSeleccionado, 1)));
-            RegistroServicio.jTextPrecio.setText(String.valueOf(jTableServicio.getValueAt(datoSeleccionado, 2)));
-            RegistroServicio.jTextFecha.setText(String.valueOf(jTableServicio.getValueAt(datoSeleccionado, 3)));
-            
+            RegistroServicio.jTextPrecio.setText(String.valueOf(jTableServicio.getValueAt(datoSeleccionado, 3)));
 
-            RegistroDoctor.jButtonGuardar.setVisible(false);
+            // Obtener la fecha de la tabla en formato "yyyy/mm/dd"
+            String fechaTabla = String.valueOf(jTableServicio.getValueAt(datoSeleccionado, 2));
+
+            try {
+                // Parsear la fecha de entrada en formato "yyyy-MM-dd" a un objeto LocalDate
+                LocalDate fechaLocal = LocalDate.parse(fechaTabla, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+
+                // Crear un objeto DateTimeFormatter para el formato de salida "dd/MM/yyyy"
+                DateTimeFormatter formatoSalida = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
+                // Formatear la fecha en el formato deseado "dd/mm/yyyy"
+                String fechaFormateada = fechaLocal.format(formatoSalida);
+
+                // Establecer el valor formateado en el JTextField
+                RegistroServicio.jTextFecha.setText(fechaFormateada);
+            } catch (DateTimeParseException e) {
+                // Manejar cualquier error de parsing de la fecha
+                e.printStackTrace();
+            }
+
+            RegistroServicio.jButtonGuardar.setVisible(false);
         } else {
             JOptionPane.showMessageDialog(null, "Debe seleccionar un registro a actualizar");
         }
-    }//GEN-LAST:event_jButtonActualizar1ActionPerformed
+    }//GEN-LAST:event_jButtoneditarActionPerformed
 
     private void jButtonActualizar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonActualizar2ActionPerformed
-        // TODO add your handling code here:
+        if (datoSeleccionado >= 0) {
+            int dato = Integer.valueOf(jTableServicio.getValueAt(datoSeleccionado, 0).toString());
+            CRUD_Servicios cli = new CRUD_Servicios();
+            if (JOptionPane.showConfirmDialog(rootPane,
+                "Se eliminará el registro, ¿desea continuar?",
+                "Eliminar Registro",
+                JOptionPane.WARNING_MESSAGE,
+                JOptionPane.YES_NO_OPTION)
+            == JOptionPane.YES_OPTION) {
+
+            cli.EliminarServicio(dato);
+            mostrar();
+            JOptionPane.showMessageDialog(null,
+                "Dato eliminado correctamente");
+        }
+        } else {
+            JOptionPane.showMessageDialog(null,
+                "Debe seleccionar un registro de la tabla");
+        }
     }//GEN-LAST:event_jButtonActualizar2ActionPerformed
 
     private void botonmostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonmostrarActionPerformed
@@ -409,9 +478,9 @@ public class RegistroServicio extends javax.swing.JFrame {
     private javax.swing.JLabel Precio1;
     public static javax.swing.JButton botonmostrar;
     private javax.swing.JButton jButtonActualizar;
-    private javax.swing.JButton jButtonActualizar1;
     private javax.swing.JButton jButtonActualizar2;
-    private javax.swing.JButton jButtonGuardar;
+    public static javax.swing.JButton jButtonGuardar;
+    private javax.swing.JButton jButtoneditar;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
     public static javax.swing.JComboBox<Categoria> jComboBoxCategoria;
     private javax.swing.JPanel jPanel1;

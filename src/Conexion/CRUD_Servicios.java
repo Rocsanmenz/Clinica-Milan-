@@ -91,12 +91,13 @@ public class CRUD_Servicios {
 
     public void ActualizarDatos(Servicios C5) {
         try {
-            CallableStatement cbst = cn.prepareCall("{call ModificarDoc(?,?,?,?,?)}");
-            cbst.setInt(1, C5.getId_Servicio());
+            CallableStatement cbst = cn.prepareCall("{call ServicioModificado(?,?,?,?,?)}");
+            cbst.setInt(1, C5.getID_Servicio());
             cbst.setString(2, C5.getNombre_Servicio());
-            cbst.setFloat(3, C5.getPrecio());
-            cbst.setInt(4, C5.getID_Categoria());
-            cbst.setDate(5, C5.getFecha());
+            cbst.setDate(3, C5.getFecha());
+            cbst.setFloat(4, C5.getPrecio());
+            cbst.setInt(5, C5.getID_Categoria());
+            
 
             cbst.executeUpdate();
 
@@ -104,4 +105,17 @@ public class CRUD_Servicios {
             JOptionPane.showMessageDialog(null, e);
         }
     }
+
+    
+    public void EliminarServicio(int ID_Servicio) {
+        try {
+            CallableStatement cbst = cn.prepareCall("{call EliminarServicio(?)}");
+            cbst.setInt(1, ID_Servicio);
+            cbst.executeUpdate();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+    }
+    
+    
 }

@@ -3,8 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Usuario/Desktop/Clinica-Milan-/src/Vista/RegistroCategoria.java</file>
-            <file>file:/C:/Users/Usuario/Desktop/Clinica-Milan-/src/Vista/RegitroPaciente.java</file>
+            <file>file:/C:/Users/Usuario/Desktop/Clinica-Milan-/src/Vista/RegistroServicio.java</file>
+            <file>file:/C:/Users/Usuario/Desktop/Clinica-Milan-/src/Conexion/CRUD_Servicios.java</file>
+            <file>file:/C:/Users/Usuario/Desktop/Clinica-Milan-/src/Vista/RegistroDoctor.java</file>
+            <file>file:/C:/Users/Usuario/Desktop/Clinica-Milan-/src/Conexion/CRUD_Doctor.java</file>
+            <file>file:/C:/Users/Usuario/Desktop/Clinica-Milan-/src/Vista/MenuPrincipal.java</file>
         </group>
     </open-files>
 </project-private>
